@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by Oscar Norman <br>
  * Date: 2020-10-11   <br>
@@ -8,6 +11,7 @@ public class Customer {
     private String personnummer;
     private String namn;
     private String datum;
+    private List<String> antalGångerPåGym = new ArrayList<>();
 
     Customer(String personnummer, String namn, String datum) {
         this.personnummer = personnummer;

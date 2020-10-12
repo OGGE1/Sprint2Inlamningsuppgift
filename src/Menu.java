@@ -19,7 +19,7 @@ public class Menu {
         while (true) {
             String input = "";
             System.out.print("Sök kund>");
-            System.out.println("Size: " + bge.getCustomerList().size());
+            //System.out.println("Size: " + bge.getCustomerList().size());
             try {
                 input = in.nextLine();
             } catch (Exception e) {
@@ -28,6 +28,10 @@ public class Menu {
             }
             search(input, bge.getCustomerList());
         }
+    }
+
+    public void goToGym() {
+        
     }
 
     public void search(String input, List<Customer> list) {

@@ -28,10 +28,10 @@ public class BestGymEver {
                     personnummer = sc.next();
                     namn = sc.nextLine();
                     datum = sc.nextLine();
-                }
 
-            customerList.add(new Customer(disectPersonnummer(personnummer), disectNamm(namn),
-                    disectDatum(datum)));
+                    customerList.add(new Customer(disectPersonnummer(personnummer), disectNamm(namn),
+                            disectDatum(datum)));
+                }
         } catch (Exception e) {
             System.out.println("Något gick fel.");
             e.printStackTrace();
