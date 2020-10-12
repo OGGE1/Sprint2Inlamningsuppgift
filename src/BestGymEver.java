@@ -31,6 +31,7 @@ public class BestGymEver {
 
                     customerList.add(new Customer(disectPersonnummer(personnummer), disectNamm(namn),
                             disectDatum(datum)));
+
                 }
         } catch (Exception e) {
             System.out.println("Något gick fel.");

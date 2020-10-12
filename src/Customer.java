@@ -16,7 +16,11 @@ public class Customer {
     Customer(String personnummer, String namn, String datum) {
         this.personnummer = personnummer;
         this.namn = namn;
-        this.datum = datum;
+        this.antalGångerPåGym.add(datum);
+    }
+
+    public List<String> getAntalGångerPåGym() {
+        return antalGångerPåGym;
     }
 
     public String getPersonnummer() {
