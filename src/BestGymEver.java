@@ -24,14 +24,11 @@ public class BestGymEver {
             String personnummer = "";
             String namn = "";
             String datum = "";
-            if (sc.hasNext()) {
-                personnummer = sc.next();
-            }
-            if (sc.hasNext()) {
-                namn = sc.nextLine();
-            }
-            if (sc.hasNext())
-                datum = sc.nextLine();
+                while (sc.hasNext()) {
+                    personnummer = sc.next();
+                    namn = sc.nextLine();
+                    datum = sc.nextLine();
+                }
 
             customerList.add(new Customer(disectPersonnummer(personnummer), disectNamm(namn),
                     disectDatum(datum)));
