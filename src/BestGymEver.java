@@ -10,8 +10,4 @@ import java.util.List;
 public class BestGymEver {
     List<Customer> customerList = new ArrayList<>();
 
-    int yes;
-    yes = 2;
-    int no;
-    no = 3;
 }
