@@ -1,3 +1,4 @@
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,17 +11,31 @@ import java.util.List;
 public class Customer {
     private String personnummer;
     private String namn;
-    private String datum;
-    private List<String> antalGångerPåGym = new ArrayList<>();
+    private LocalDate betalningsDatum = LocalDate.now();
+    private List<LocalDate> antalGångerPåGym = new ArrayList<>();
 
-    Customer(String personnummer, String namn, String datum) {
-        this.personnummer = personnummer;
-        this.namn = namn;
+    Customer() {}
+
+    Customer(String personnummer, String namn, LocalDate datum) {
+        setPersonnummer(personnummer);
+        setNamn(namn);
+        setBetalningsDatum(datum);
+    }
+
+    public void läggTillAntalGångerPåGym(LocalDate datum) {
         this.antalGångerPåGym.add(datum);
     }
 
-    public List<String> getAntalGångerPåGym() {
-        return antalGångerPåGym;
+    public String printAntalGångerPåGym() {
+        String dates = "";
+        for (var e: antalGångerPåGym){
+            dates += e + "\n";
+        }
+        return dates;
+    }
+
+    public void setBetalningsDatum(LocalDate betalningsDatum) {
+        this.betalningsDatum = betalningsDatum;
     }
 
     public String getPersonnummer() {
@@ -39,11 +54,26 @@ public class Customer {
         this.namn = namn;
     }
 
-    public String getDatum() {
-        return datum;
+    public boolean harBetalatAvgift() {
+        LocalDate today = LocalDate.now();
+        return getBetalningsDatum().isAfter(today.minusYears(1));
     }
 
-    public void setDatum(String datum) {
-        this.datum = datum;
+    public String printHarBetalatAvgift() {
+        if (harBetalatAvgift())
+            return "Ja";
+        else
+            return "Nej";
+    }
+
+    public LocalDate getBetalningsDatum() {
+        return betalningsDatum;
+    }
+
+    @Override
+    public String toString() {
+        return getNamn().toUpperCase() + "\nPersonnummer: " + getPersonnummer() + "\nBetalat avgiften? " +
+               printHarBetalatAvgift() +"\n\u2193Besök på gym\u2193" + "\n" + printAntalGångerPåGym();
+
     }
 }

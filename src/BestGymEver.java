@@ -1,8 +1,6 @@
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -15,24 +13,21 @@ import java.util.Scanner;
  */
 public class BestGymEver {
 
-    Path inFile = Paths.get("Customers.txt");
-    Path outFile = Paths.get("outCustomers");
+    protected Path inFile = Paths.get("KunderIn.txt");
+    protected Path outFile = Paths.get("KunderUt.txt");
 
-    public List<Customer> getCustomerList() {
+    public List<Customer> getCustomerList(Path inFile) {
         List<Customer> customerList = new ArrayList<>();
-        try (Scanner sc = new Scanner(inFile);) {
-            String personnummer = "";
-            String namn = "";
-            String datum = "";
-                while (sc.hasNext()) {
-                    personnummer = sc.next();
-                    namn = sc.nextLine();
-                    datum = sc.nextLine();
+        try (Scanner sc = new Scanner(inFile)) {
+            while (sc.hasNext()) {
+                String personnummer = sc.next();
+                String namn = sc.nextLine();
+                String datum = sc.nextLine();
 
-                    customerList.add(new Customer(disectPersonnummer(personnummer), disectNamm(namn),
-                            disectDatum(datum)));
-
-                }
+                LocalDate date = LocalDate.parse(disectDatum(datum));
+                customerList.add(new Customer(disectPersonnummer(personnummer), disectNamm(namn),
+                        date));
+            }
         } catch (Exception e) {
             System.out.println("Något gick fel.");
             e.printStackTrace();
